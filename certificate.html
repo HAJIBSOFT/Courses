@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شهادة حضور - فريق العطاء التطوعي</title>
+    <!-- Tailwind CSS للتصميم المعين للواجهة -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        /* إعدادات الطباعة الصارمة لإلغاء هوامش المتصفح وإخفاء الترويسات والتذييلات */
+        @page {
+            size: A4 landscape;
+            margin: 0; /* هذا يلغي تماماً الهوامش وتاريخ ورابط الصفحة من الطباعة */
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #ffffff;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            /* إخفاء شريط الأدوات العلوي عند البدء بالطباعة */
+            .no-print {
+                display: none !important;
+            }
+            /* جعل الشهادة تمتد على كامل ورقة الـ A4 في الطباعة دون ملل */
+            #certificate-container {
+                width: 100vw !important;
+                height: 100vh !important;
+                max-width: 100% !important;
+                max-height: 100% !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- شفرة شريط الأدوات العلوي (يختفي تلقائياً عند الطباعة) -->
+    <div class="no-print w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800 py-4 px-6 flex justify-between items-center z-50">
+        <div class="flex items-center gap-3">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjW7zjVTQjVNgFtRlYaZhuNbhPmhhh4TWHuNaGxx6mf6oemfkeOEuFvFrTKYyt8qBkPPdAUKmciS4bUBYNG_4j1V2N7a2bN5q8q2jKeV_rV04oEb4mGlhY2GrFoi8Z76VBCGCUA9pWz22EjSqm8GCqEigCFfj0HUyif3vKItDRp_-l8XnQGsDpah5U3pQcA/s400/d36a9bef-097f-4d48-ad57-85e4d096fd54_IMG-20241015-WA0003-1-.png" alt="شعار فريق العطاء" class="w-10 h-10 object-contain">
+            <div>
+                <h1 class="text-white font-extrabold text-sm">بوابة الشهادات الرقمية</h1>
+                <p class="text-xs text-slate-400">فريق العطاء التطوعي</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl transition shadow-lg flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.617 0-1.11-.461-1.12-1.078L6.34 18m11.32 0h-11.32m0 0V9a1.01 1.01 0 01.028-.237m0 0a17.945 17.945 0 0111.264 0c.018.07.028.154.028.237v9m-11.32-.237a1.01 1.01 0 01-.028-.237V9m11.32.237V9m0 0a1.01 1.01 0 00-.028-.237" /></svg>
+                حفظ كملف PDF / طباعة
+            </button>
+            <button onclick="window.close()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs md:text-sm px-4 py-2.5 rounded-xl transition">
+                إغلاق النافذة
+            </button>
+        </div>
+    </div>
+
+    <!-- منطقة المعاينة المريحة (تتوسط الشاشة وتدعم التجاوب الذكي) -->
+    <div class="flex-grow flex items-center justify-center p-4 md:p-8">
+        <div class="overflow-auto max-w-full max-h-full flex items-center justify-center">
+            
+            <!-- كارت الشهادة المستقل والثابت وبأبعاد الـ A4 الأفقية الدقيقة -->
+            <div id="certificate-container" class="w-[1123px] h-[794px] relative flex flex-col justify-between p-24 text-center select-none box-border shrink-0 bg-white rounded-2xl shadow-2xl border border-slate-800" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOMVRusJLFxzP3PqpeKEbLD3O-JG_U3VLEIVHOWqqDp6LobVYhW-s-Sdy88P1e61hikZ4KS0feLOzRGE7yA09n7wKHFj4BVpXp6Re5l-mBUAJJZKoKFW_nOrat4zsE1Am0-KE9SxVNKLA0w66_z1gYiHdwQFrzEKEhBDLswWxHNyZe3fQC8sKD5UKLa85C/s1123/%D8%AE%D9%84%D9%81%D9%8I%D8%A9%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9.png'); background-size: 100% 100%; background-repeat: no-repeat; font-family: 'Amiri', serif;">
+                
+                <!-- الجزء العلوي من الشهادة -->
+                <div class="mt-20">
+                    <h2 class="text-3xl font-bold text-amber-900 tracking-wide">
+                        شهادة حضور دورة <span id="cert-title-top" class="text-amber-800 font-extrabold"></span> (عن بعد)
+                    </h2>
+                </div>
+                
+                <!-- نص محتوى الشهادة المطابق للمطلوب -->
+                <div class="my-auto flex flex-col gap-5 text-slate-800">
+                    <p class="text-2xl leading-none">يشهد فريق العطاء التطوعي بأن المتدرب/ـة</p>
+                    <h3 id="cert-user-name" class="text-5xl font-extrabold text-indigo-950 my-1 py-1">-- اسم المتدرب --</h3>
+                    <p class="text-2xl leading-none">قد حضر/ت دورة</p>
+                    <h4 id="cert-course-title" class="text-3xl font-extrabold text-amber-900">-- اسم الدورة --</h4>
+                    <p class="text-2xl leading-relaxed">
+                        والتي أقيمت يوم <span id="cert-day" class="font-bold text-slate-900"></span> بتاريخ <span id="cert-date" class="font-bold text-slate-900"></span> بواقع <span id="cert-hours" class="font-bold text-slate-900"></span> ساعات
+                    </p>
+                </div>
+
+                <!-- الجزء السفلي من الشهادة -->
+                <div class="mb-14">
+                    <p class="text-2xl font-bold italic text-slate-700">ممتنين له دوام التوفيق</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- تذييل مخفي في الطباعة -->
+    <div class="no-print bg-slate-950 py-4 text-center text-xs text-slate-600 border-t border-slate-900">
+        تنبيه: لحفظ الشهادة كملف PDF نظيف وخالٍ من الهوامش، يرجى تفعيل خيار "خلفيات الرسومات" وتعطيل "الرؤوس والتذييلات" من نافذة الطباعة التابعة لمتصفحك [1].
+    </div>
+
+    <!-- برمجة قراءة وفك تشفير البيانات الممررة تلقائياً عبر الرابط -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // جلب وتشفير البيانات المستلمة
+            const name = decodeURIComponent(urlParams.get('name') || "-- اسم المتدرب --");
+            const course = decodeURIComponent(urlParams.get('course') || "-- اسم الدورة --");
+            const hours = decodeURIComponent(urlParams.get('hours') || "غير محدد");
+            const rawDate = decodeURIComponent(urlParams.get('date') || "");
+
+            // معالجة وحساب التاريخ واليوم بالعربية
+            let dayName = "غير محدد";
+            let dateFormatted = "غير محدد";
+
+            if (rawDate) {
+                try {
+                    const dateObj = new Date(rawDate);
+                    if (!isNaN(dateObj.getTime())) {
+                        dayName = dateObj.toLocaleDateString('ar-EG', { weekday: 'long' });
+                        dateFormatted = dateObj.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+                    }
+                } catch(e) {
+                    console.error("Error formatting date", e);
+                }
+            }
+
+            // حقن وتوزيع البيانات بدقة متناهية داخل القالب
+            document.getElementById("cert-title-top").innerText = course;
+            document.getElementById("cert-user-name").innerText = name;
+            document.getElementById("cert-course-title").innerText = course;
+            document.getElementById("cert-day").innerText = dayName;
+            document.getElementById("cert-date").innerText = dateFormatted;
+            document.getElementById("cert-hours").innerText = hours;
+        });
+    </script>
+</body>
+</html>
