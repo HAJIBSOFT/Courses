@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التدريب التطوعي</title>
+    <title>فريق شذرات الابداع التطوعي</title>
     <!-- Tailwind CSS للتصميم العصري -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -18,11 +18,70 @@
             transform: translateY(-6px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
+
+        /* تنسيقات الطباعة المحسنة للهواتف والمتصفحات المختلفة بخط Cairo */
+        @media print {
+            @page {
+                size: A4 landscape; /* فرض الطباعة بالوضع الأفقي ومقاس A4 */
+                margin: 0; /* إلغاء هوامش المتصفح لمنع الصفحات الفارغة والتداخل */
+            }
+            
+            /* إخفاء كافة عناصر الصفحة تماماً لضمان عدم حجز أي مساحات تولد صفحات زائدة */
+            body > *:not(#certificate-print-area) { 
+                display: none !important; 
+            }
+            
+            html, body {
+                width: 297mm;
+                height: 210mm;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: hidden !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            #certificate-print-area {
+                display: flex !important; 
+                position: absolute !important; 
+                left: 0 !important; 
+                top: 0 !important; 
+                width: 297mm !important; 
+                height: 210mm !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-sizing: border-box !important;
+                align-items: center !important; 
+                justify-content: center !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                page-break-inside: avoid !important;
+                page-break-before: avoid !important;
+                page-break-after: avoid !important;
+                background-color: white !important;
+            }
+
+            /* ضبط حاوية الشهادة لتناسب شاشات الهواتف ومحركات طباعة الويب */
+            #certificate-print-area > div {
+                width: 297mm !important;
+                height: 210mm !important;
+                max-width: 297mm !important;
+                max-height: 210mm !important;
+                box-sizing: border-box !important;
+                padding: 24mm !important; /* الهوامش الداخلية متناسقة بالمليمتر */
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                font-family: 'Cairo', sans-serif !important; /* تغيير خط الشهادة إلى Cairo */
+            }
+        }
     </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- رأس الصفحة العصري (Header) -->
+    <!-- رأس الصفحة العصري -->
     <header class="bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-900 text-white relative py-10 px-4 shadow-xl border-b border-indigo-950/40">
         
         <!-- حاوية خلفية معزولة تمنع التمرير الجانبي دون قص القائمة المنسدلة -->
@@ -34,9 +93,9 @@
         <div class="max-w-6xl mx-auto flex justify-between items-center relative z-10">
             <div class="text-right flex flex-col items-start">
                 <!-- لوقو الفريق الرسمي المرفق فوق اسم الفريق مباشرة -->
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjW7zjVTQjVNgFtRlYaZhuNbhPmhhh4TWHuNaGxx6mf6oemfkeOEuFvFrTKYyt8qBkPPdAUKmciS4bUBYNG_4j1V2N7a2bN5q8q2jKeV_rV04oEb4mGlhY2GrFoi8Z76VBCGCUA9pWz22EjSqm8GCqEigCFfj0HUyif3vKItDRp_-l8XnQGsDpah5U3pQcA/s400/d36a9bef-097f-4d48-ad57-85e4d096fd54_IMG-20241015-WA0003-1-.png" alt="شعار فريق العطاء التطوعي" class="w-20 h-20 object-contain mb-3 drop-shadow-lg">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjW7zjVTQjVNgFtRlYaZhuNbhPmhhh4TWHuNaGxx6mf6oemfkeOEuFvFrTKYyt8qBkPPdAUKmciS4bUBYNG_4j1V2N7a2bN5q8q2jKeV_rV04oEb4mGlhY2GrFoi8Z76VBCGCUA9pWz22EjSqm8GCqEigCFfj0HUyif3vKItDRp_-l8XnQGsDpah5U3pQcA/s400/d36a9bef-097f-4d48-ad57-85e4d096fd54_IMG-20241015-WA0003-1-.png" alt="شعار فريق شذرات الابداع التطوعي" class="w-20 h-20 object-contain mb-3 drop-shadow-lg">
                 
-                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">فريق العطاء التطوعي</h1>
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">فريق شذرات الابداع التطوعي</h1>
                 <p class="text-slate-300 mt-1 text-xs md:text-sm max-w-lg hidden md:block">نتشارك المعرفة لنبني المستقبل. منصة تعليمية تطوعية لتقديم دورات مجانية بشهادات معتمدة.</p>
                 
                 <!-- أزرار مواقع التواصل الاجتماعي -->
@@ -68,10 +127,9 @@
                 <!-- الصندوق المنسدل المطور لحل مشكلة الشاشات الصغيرة -->
                 <div id="auth-dropdown" class="hidden absolute left-0 right-auto mt-3 w-[290px] sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-5 text-slate-800 z-50">
                     
-                    <!-- لوقو الفريق في أعلى القائمة المنسدلة -->
                     <div class="flex flex-col items-center pb-4 mb-4 border-b border-slate-100">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOMVRusJLFxzP3PqpeKEbLD3O-JG_U3VLEIVHOWqqDp6LobVYhW-s-Sdy88P1e61hikZ4KS0feLOzRGE7yA09n7wKHFj4BVpXp6Re5l-mBUAJJZKoKFW_nOrat4zsE1Am0-KE9SxVNKLA0w66_z1gYiHdwQFrzEKEhBDLswWxHNyZe3fQC8sKD5UKLa85C/s400/d36a9bef-097f-4d48-ad57-85e4d096fd54_IMG-20241015-WA0003-1-.png" alt="شعار فريق العطاء التطوعي" class="w-14 h-14 object-contain mb-2">
-                        <span class="text-xs font-bold text-indigo-600">فريق العطاء التطوعي</span>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjW7zjVTQjVNgFtRlYaZhuNbhPmhhh4TWHuNaGxx6mf6oemfkeOEuFvFrTKYyt8qBkPPdAUKmciS4bUBYNG_4j1V2N7a2bN5q8q2jKeV_rV04oEb4mGlhY2GrFoi8Z76VBCGCUA9pWz22EjSqm8GCqEigCFfj0HUyif3vKItDRp_-l8XnQGsDpah5U3pQcA/s400/d36a9bef-097f-4d48-ad57-85e4d096fd54_IMG-20241015-WA0003-1-.png" alt="شعار فريق شذرات الابداع التطوعي" class="w-14 h-14 object-contain mb-2">
+                        <span class="text-xs font-bold text-indigo-600">فريق شذرات الابداع التطوعي</span>
                     </div>
 
                     <!-- 1. نموذج طلب البريد الإلكتروني -->
@@ -127,7 +185,7 @@
                 <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">الدورات التدريبية القادمة</h2>
             </div>
             <div id="upcoming-courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- الهياكل الرمزية الافتراضية للتحميل (Skeleton Loaders) -->
+                <!-- الهياكل الرمزية الافتراضية للتحميل -->
                 <div class="animate-pulse bg-white rounded-2xl p-5 border border-slate-100 flex flex-col gap-4 shadow-sm">
                     <div class="bg-slate-200 h-48 w-full rounded-xl"></div>
                     <div class="h-6 bg-slate-200 rounded-md w-3/4"></div>
@@ -155,14 +213,44 @@
         </section>
     </main>
 
+    <!-- الشهادة الاحترافية القابلة للطباعة بخلفية مدمجة وصياغة نصية مخصصة ومحاذاة ممتازة بخط Cairo -->
+    <div id="certificate-print-area" class="hidden fixed inset-0 bg-white z-50 flex items-center justify-center p-0">
+        <!-- تم تغيير الخط هنا إلى Cairo بشكل افتراضي ليظهر بنمط متكامل -->
+        <div class="w-[1123px] h-[794px] relative flex flex-col justify-between p-24 text-center select-none box-border" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOMVRusJLFxzP3PqpeKEbLD3O-JG_U3VLEIVHOWqqDp6LobVYhW-s-Sdy88P1e61hikZ4KS0feLOzRGE7yA09n7wKHFj4BVpXp6Re5l-mBUAJJZKoKFW_nOrat4zsE1Am0-KE9SxVNKLA0w66_z1gYiHdwQFrzEKEhBDLswWxHNyZe3fQC8sKD5UKLa85C/s1123/%D8%AE%D9%84%D9%81%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9.png'); background-size: 100% 100%; background-repeat: no-repeat; font-family: 'Cairo', sans-serif;">
+            
+            <!-- الجزء العلوي من الشهادة -->
+            <div class="mt-20">
+                <h2 class="text-3xl font-bold text-amber-900 tracking-wide">
+                    شهادة حضور دورة <span id="cert-title-top" class="text-amber-800 font-extrabold"></span> (عن بعد)
+                </h2>
+            </div>
+            
+            <!-- نص محتوى الشهادة المطابق للمطلوب مع ضبط دقيق ومسافات ممتازة -->
+            <div class="my-auto flex flex-col gap-5 text-slate-800">
+                <p class="text-2xl leading-none">يشهد فريق شذرات الابداع التطوعي بأن المتدرب/ـة</p>
+                <h3 id="cert-user-name" class="text-4xl font-extrabold text-indigo-950 my-1 py-1">-- اسم المتدرب --</h3>
+                <p class="text-2xl leading-none">قد حضر/ت دورة</p>
+                <h4 id="cert-course-title" class="text-3xl font-extrabold text-amber-900">-- اسم الدورة --</h4>
+                <p class="text-2xl leading-relaxed">
+                    والتي أقيمت يوم <span id="cert-day" class="font-bold text-slate-900"></span> بتاريخ <span id="cert-date" class="font-bold text-slate-900"></span> بواقع <span id="cert-hours" class="font-bold text-slate-900"></span> ساعات
+                </p>
+            </div>
+
+            <!-- الجزء السفلي من الشهادة -->
+            <div class="mb-14">
+                <p class="text-2xl font-bold italic text-slate-700">ممتنين له دوام التوفيق</p>
+            </div>
+        </div>
+    </div>
+
     <!-- التذييل -->
     <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-right">
             <div>
-                <p class="text-white font-bold text-lg">فريق العطاء التطوعي</p>
+                <p class="text-white font-bold text-lg">فريق شذرات الابداع التطوعي</p>
                 <p class="text-sm text-slate-500 mt-1">تطوير مستدام لتمكين الكفاءات وتسهيل تبادل الخبرات.</p>
             </div>
-            <p class="text-sm text-slate-500">© 2026 فريق العطاء التطوعي. جميع الحقوق محفوظة.</p>
+            <p class="text-sm text-slate-500">© 2026 فريق شذرات الابداع التطوعي. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
@@ -415,11 +503,7 @@
             }
         }
 
-        // تم إصلاح الدالة بتعريف المتغير الداخلي وحمايته لتفادي حدوث أي أخطاء وانهيار واجهة العرض
         function getButtonHTML(course, isRegistered, attended) {
-            // تعريف المتغير العام الخاص بتسجيلات هذا المستخدم للحصول على الاسم بأمان
-            const userReg = userRegistrations[course.id] || { name: "" };
-
             if (course.status === "upcoming") {
                 if (!currentUserEmail) {
                     return `<button onclick="focusLogin()" class="w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2">
@@ -460,18 +544,18 @@
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.507 9.388.507 9.388.507s7.518 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                                 مشاهدة التسجيل
                             </a>
-                            <!-- زر ينقل إلى صفحة الشهادة المستقلة مع تمرير البيانات المشفرة بأمان -->
-                            <a href="certificate.html?name=${encodeURIComponent(userReg.name)}&course=${encodeURIComponent(course.title)}&hours=${encodeURIComponent(course.hours)}&date=${encodeURIComponent(course.date)}" target="_blank" title="عرض وتحميل الشهادة" class="bg-amber-100 hover:bg-amber-200 text-amber-800 p-2.5 rounded-xl transition duration-300 shadow-md border border-amber-200 shrink-0 flex items-center justify-center">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h10.5m-10.5 3h10.5m-13.5-9h16.5m-16.5 0a1.5 1.5 0 00-1.5 1.5v11.25a1.5 1.5 0 001.5 1.5h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75z" /></svg>
-                            </a>
+                        <button onclick="printCertificate('${course.id}')" class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2 border border-amber-500/20">
+                            <svg class="w-5 h-5 text-amber-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.617 0-1.11-.461-1.12-1.078L6.34 18m11.32 0h-11.32m0 0V9a1.01 1.01 0 01.028-.237m0 0a17.945 17.945 0 0111.264 0c.018.07.028.154.028.237v9m-11.32-.237a1.01 1.01 0 01-.028-.237V9m11.32.237V9m0 0a1.01 1.01 0 00-.028-.237" /></svg>
+                            طباعة شهادة الحضور
+                        </button>
                         </div>
                     `;
                 } else if (isAttended) {
                     return `
-                        <a href="certificate.html?name=${encodeURIComponent(userReg.name)}&course=${encodeURIComponent(course.title)}&hours=${encodeURIComponent(course.hours)}&date=${encodeURIComponent(course.date)}" target="_blank" class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2 border border-amber-500/20">
-                            <svg class="w-5 h-5 text-amber-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h10.5m-10.5 3h10.5m-13.5-9h16.5m-16.5 0a1.5 1.5 0 00-1.5 1.5v11.25a1.5 1.5 0 001.5 1.5h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75z" /></svg>
-                            عرض وطباعة الشهادة
-                        </a>
+                        <button onclick="printCertificate('${course.id}')" class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2 border border-amber-500/20">
+                            <svg class="w-5 h-5 text-amber-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.617 0-1.11-.461-1.12-1.078L6.34 18m11.32 0h-11.32m0 0V9a1.01 1.01 0 01.028-.237m0 0a17.945 17.945 0 0111.264 0c.018.07.028.154.028.237v9m-11.32-.237a1.01 1.01 0 01-.028-.237V9m11.32.237V9m0 0a1.01 1.01 0 00-.028-.237" /></svg>
+                            طباعة شهادة الحضور
+                        </button>
                     `;
                 } else if (hasYoutube) {
                     return `<a href="${course.youtubeLink}" target="_blank" class="w-full text-center bg-red-600 hover:bg-red-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2">
@@ -482,7 +566,7 @@
                     return `<div class="bg-amber-50 border border-amber-100/50 text-amber-800 text-center rounded-xl p-2.5 text-[11px] font-semibold">بانتظار رصد الحضور من قبل المنظمين لإتاحة الشهادة.</div>`;
                 }
                 
-                return `<p class="text-xs text-slate-400 text-center py-2 font-semibold">لا توجد تسجيلات أو شهادات متاحة.</p>`;
+                return `<p class="text-xs text-slate-400 text-center py-2 font-semibold">لم تقم بالتسجيل في هذه الدورة</p>`;
             }
             return "";
         }
@@ -521,6 +605,31 @@
                 btn.disabled = false;
                 btn.innerHTML = originalHTML;
             }
+        }
+
+        function printCertificate(courseId) {
+            const course = coursesData.find(c => c.id === courseId);
+            const userReg = userRegistrations[courseId];
+            if (!course || !userReg) return;
+            
+            const dateObj = new Date(course.date);
+            const dayName = dateObj.toLocaleDateString('ar-EG', { weekday: 'long' });
+            const dateFormatted = dateObj.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            document.getElementById("cert-title-top").innerText = course.title;
+            document.getElementById("cert-user-name").innerText = userReg.name;
+            document.getElementById("cert-course-title").innerText = course.title;
+            document.getElementById("cert-day").innerText = dayName;
+            document.getElementById("cert-date").innerText = dateFormatted;
+            document.getElementById("cert-hours").innerText = course.hours;
+            
+            const certArea = document.getElementById("certificate-print-area");
+            certArea.classList.remove("hidden");
+            
+            setTimeout(() => {
+                window.print();
+                certArea.classList.add("hidden");
+            }, 600);
         }
 
         function validateEmail(email) {
