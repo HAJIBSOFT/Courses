@@ -91,7 +91,7 @@
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
         <p class="text-lg font-bold">جاري معالجة وتصدير الشهادة بدقة عالية...</p>
-        <p class="text-xs text-slate-400">يرجى الانتظار بضع ثوانٍ</p>
+        <p class="text-xs text-slate-400">يرجى الانتظار ثوانٍ معدودة</p>
     </div>
 
     <!-- رأس الصفحة العصري -->
@@ -117,7 +117,7 @@
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                     <a href="https://instagram.com/" target="_blank" class="text-slate-300 hover:text-pink-400 transition bg-white/5 hover:bg-white/10 p-2 rounded-xl border border-white/5 flex items-center justify-center">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
                     <a href="https://youtube.com/" target="_blank" class="text-slate-300 hover:text-red-500 transition bg-white/5 hover:bg-white/10 p-2 rounded-xl border border-white/5 flex items-center justify-center">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" /></svg>
@@ -227,24 +227,20 @@
     </main>
 
     <!-- الشهادة الاحترافية القابلة للطباعة بخلفية مدمجة وصياغة نصية مخصصة ومحاذاة ممتازة بخط Cairo -->
+    <!-- (ملاحظة: هذا العنصر يعمل كمخطط افتراضي للطباعة التقليدية Ctrl+P عبر المتصفح) -->
     <div id="certificate-print-area" class="hidden fixed inset-0 bg-white z-50 flex items-center justify-center p-0">
-        <!-- تم تغيير الخط هنا إلى Cairo بشكل افتراضي ليظهر بنمط متكامل -->
         <div class="w-[1123px] h-[794px] relative flex flex-col justify-between p-24 text-center select-none box-border overflow-hidden" style="font-family: 'Cairo', sans-serif;">
-            
-            <!-- استخدام وسم img صلب عوضاً عن خلفيات CSS لحل مشكلة CORS وقيود الأمان بالمتصفحات بالكامل -->
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOMVRusJLFxzP3PqpeKEbLD3O-JG_U3VLEIVHOWqqDp6LobVYhW-s-Sdy88P1e61hikZ4KS0feLOzRGE7yA09n7wKHFj4BVpXp6Re5l-mBUAJJZKoKFW_nOrat4zsE1Am0-KE9SxVNKLA0w66_z1gYiHdwQFrzEKEhBDLswWxHNyZe3fQC8sKD5UKLa85C/s1123/%D8%AE%D9%84%D9%81%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9.png" 
+            <img id="cert-bg-img" 
+                 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOMVRusJLFxzP3PqpeKEbLD3O-JG_U3VLEIVHOWqqDp6LobVYhW-s-Sdy88P1e61hikZ4KS0feLOzRGE7yA09n7wKHFj4BVpXp6Re5l-mBUAJJZKoKFW_nOrat4zsE1Am0-KE9SxVNKLA0w66_z1gYiHdwQFrzEKEhBDLswWxHNyZe3fQC8sKD5UKLa85C/s1123/%D8%AE%D9%84%D9%81%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9.png" 
                  alt="Certificate Background" 
-                 crossorigin="anonymous" 
                  class="absolute inset-0 w-full h-full object-cover -z-10 pointer-events-none">
 
-            <!-- الجزء العلوي من الشهادة -->
             <div class="mt-20">
                 <h2 class="text-3xl font-bold text-amber-900 tracking-wide">
                     شهادة حضور دورة <span id="cert-title-top" class="text-amber-800 font-extrabold"></span> (عن بعد)
                 </h2>
             </div>
             
-            <!-- نص محتوى الشهادة المطابق للمطلوب مع ضبط دقيق ومسافات ممتازة -->
             <div class="my-auto flex flex-col gap-5 text-slate-800 relative z-10">
                 <p class="text-2xl leading-none">يشهد فريق شذرات الابداع التطوعي بأن المتدرب/ـة</p>
                 <h3 id="cert-user-name" class="text-4xl font-extrabold text-indigo-950 my-1 py-1">-- اسم المتدرب --</h3>
@@ -255,7 +251,6 @@
                 </p>
             </div>
 
-            <!-- الجزء السفلي من الشهادة -->
             <div class="mb-14">
                 <p class="text-2xl font-bold italic text-slate-700">ممتنين له دوام التوفيق</p>
             </div>
@@ -280,13 +275,90 @@
         let userRegistrations = {};
         let currentUserEmail = localStorage.getItem("userEmail") || "";
         let currentUserName = localStorage.getItem("userName") || "";
+        
+        // متغير عالمي لحفظ الصورة المشفرة محلياً Base64 فور تحميل الصفحة
+        let cachedBase64Bg = "";
 
         const SPINNER_SVG = `<svg class="animate-spin h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
 
         document.addEventListener("DOMContentLoaded", () => {
             initAuthUI();
             fetchData();
+            preloadCertificateBackground(); // جلب وتحويل صورة الخلفية لـ Base64 فور بدء التشغيل
         });
+
+        // دالة لجلب خلفية الشهادة ومعالجتها لـ Base64 مسبقاً لمنع حدوث "Tainted Canvas"
+        async function preloadCertificateBackground() {
+            const bgUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOMVRusJLFxzP3PqpeKEbLD3O-JG_U3VLEIVHOWqqDp6LobVYhW-s-Sdy88P1e61hikZ4KS0feLOzRGE7yA09n7wKHFj4BVpXp6Re5l-mBUAJJZKoKFW_nOrat4zsE1Am0-KE9SxVNKLA0w66_z1gYiHdwQFrzEKEhBDLswWxHNyZe3fQC8sKD5UKLa85C/s1123/%D8%AE%D9%84%D9%81%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9.png";
+            try {
+                // محاولة جلب الصورة مباشرة مع وضع CORS (خوادم جوجل تدعم ذلك افتراضياً)
+                let response = await fetch(bgUrl, { mode: 'cors' });
+                if (!response.ok) {
+                    // في حال فشل الاتصال المباشر، نستعين بالبروكسي كخط دفاع بديل
+                    const proxyUrl = "https://corsproxy.io/?url=" + encodeURIComponent(bgUrl);
+                    response = await fetch(proxyUrl);
+                }
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        cachedBase64Bg = reader.result;
+                        const bgImg = document.getElementById("cert-bg-img");
+                        if (bgImg) {
+                            bgImg.src = cachedBase64Bg;
+                        }
+                    };
+                    reader.readAsDataURL(blob);
+                }
+            } catch (error) {
+                console.error("Failed to preload certificate background:", error);
+            }
+        }
+
+        // دالة مساعدة لجلب الصورة وتحويلها فوراً (تُستدعى كخطة بديلة إذا ضغط المستخدم على زر الطباعة قبل اكتمال التحميل المسبق)
+        async function fetchBase64ImageDirectly(url) {
+            try {
+                // محاولة الاتصال المباشر أولاً
+                let response = await fetch(url, { mode: 'cors' });
+                if (!response.ok) {
+                    // الاتصال عبر البروكسي الأول
+                    const proxyUrl = "https://corsproxy.io/?url=" + encodeURIComponent(url);
+                    response = await fetch(proxyUrl);
+                }
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onloadend = () => resolve(reader.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(blob);
+                    });
+                }
+            } catch (e) {
+                console.warn("Primary fetch options failed, trying alternative proxy...", e);
+            }
+
+            // محاولة أخيرة ببروكسي AllOrigins الشهير في حال تعطل الخيارات السابقة
+            try {
+                const altProxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(url);
+                const response = await fetch(altProxyUrl);
+                if (response.ok) {
+                    const blob = await response.blob();
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onloadend = () => resolve(reader.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(blob);
+                    });
+                }
+            } catch (err) {
+                console.error("All backup proxies failed:", err);
+            }
+
+            return url; // كخيار أخير نرجع الرابط الأصلي نفسه كـ Fallback
+        }
 
         function toggleAuthDropdown() {
             const dropdown = document.getElementById("auth-dropdown");
@@ -626,91 +698,134 @@
             }
         }
 
-        function printCertificate(courseId, btn) {
+        async function printCertificate(courseId, btn) {
             const course = coursesData.find(c => c.id === courseId);
             const userReg = userRegistrations[courseId];
             if (!course || !userReg) return;
             
-            // تفعيل حالة التحميل على الزر لتسهيل التجربة
+            // 1. تفعيل حالة التحميل التفاعلية على الزر
             const originalHTML = btn.innerHTML;
             btn.disabled = true;
             btn.innerHTML = `${SPINNER_SVG} <span class="mr-2">جاري التحضير...</span>`;
 
-            const dateObj = new Date(course.date);
-            const dayName = dateObj.toLocaleDateString('ar-EG', { weekday: 'long' });
-            const dateFormatted = dateObj.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
-
-            // تحديث بيانات الشهادة النصية
-            document.getElementById("cert-title-top").innerText = course.title;
-            document.getElementById("cert-user-name").innerText = userReg.name;
-            document.getElementById("cert-course-title").innerText = course.title;
-            document.getElementById("cert-day").innerText = dayName;
-            document.getElementById("cert-date").innerText = dateFormatted;
-            document.getElementById("cert-hours").innerText = course.hours;
-            
+            // 2. إظهار واجهة الانتظار الرائعة فوراً
             const overlay = document.getElementById("pdf-loading-overlay");
-            const certArea = document.getElementById("certificate-print-area");
-            
-            // إظهار شاشة التحميل الرائعة لحجب الخلفية عن أعين المستخدمين
             overlay.classList.remove("hidden");
-            
-            // إظهار الشهادة بالخلفية بشكل كامل بـ z-index متوسط لكي يتم تصويرها بدقة دون تعطل الأبعاد
-            certArea.classList.remove("hidden");
-            certArea.style.cssText = "position: fixed !important; inset: 0 !important; display: flex !important; justify-content: center !important; align-items: center !important; z-index: 50 !important; background-color: white !important; opacity: 1 !important;";
-            
-            const element = certArea.querySelector("div");
 
-            // خيارات التصدير الفائقة
-            const opt = {
-                margin: 0,
-                filename: `شهادة_${userReg.name}_${course.title}.pdf`,
-                image: { type: 'jpeg', quality: 1.0 },
-                html2canvas: { 
-                    scale: 2, // دقة ممتازة لخطوط خالية من التشوهات والضبابية
-                    useCORS: true, // تفعيل طلبات CORS لجلب صورة الخلفية الخارجية
-                    allowTaint: false,
-                    letterRendering: true,
-                    logging: false
-                },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
-                    orientation: 'landscape' 
+            try {
+                // 3. تأكيد تحميل الخلفية محلياً كـ Base64 لمتصفح المستخدم
+                const bgUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOMVRusJLFxzP3PqpeKEbLD3O-JG_U3VLEIVHOWqqDp6LobVYhW-s-Sdy88P1e61hikZ4KS0feLOzRGE7yA09n7wKHFj4BVpXp6Re5l-mBUAJJZKoKFW_nOrat4zsE1Am0-KE9SxVNKLA0w66_z1gYiHdwQFrzEKEhBDLswWxHNyZe3fQC8sKD5UKLa85C/s1123/%D8%AE%D9%84%D9%81%D9%8I%D8%A9%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9.png";
+                if (!cachedBase64Bg) {
+                    cachedBase64Bg = await fetchBase64ImageDirectly(bgUrl);
                 }
-            };
 
-            // ترك مهلة قصيرة (150 ملي ثانية) لتحديث النصوص ووسم الصورة قبل البدء بالتصوير
-            setTimeout(() => {
-                html2pdf().from(element).set(opt).toPdf().get('pdf').then((pdf) => {
-                    const blobUrl = pdf.output('bloburl');
-                    
-                    // فتح الشهادة برابط blob: في نافذة مستقلة
-                    const newWindow = window.open(blobUrl, '_blank');
-                    
-                    // بديل آمن وسلس لمتصفحات الهواتف التي قد تمنع النوافذ المنبثقة
-                    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-                        const link = document.createElement('a');
-                        link.href = blobUrl;
-                        link.download = `شهادة_${userReg.name}_${course.title}.pdf`;
-                        link.click();
+                const dateObj = new Date(course.date);
+                const dayName = dateObj.toLocaleDateString('ar-EG', { weekday: 'long' });
+                const dateFormatted = dateObj.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                // 4. بناء عنصر مؤقت صلب ومعزول تماماً ومحكم الاتجاه والمحاذاة
+                const tempDiv = document.createElement("div");
+                tempDiv.style.position = "fixed";
+                tempDiv.style.left = "-9999px";
+                tempDiv.style.top = "-9999px";
+                tempDiv.style.width = "1123px";
+                tempDiv.style.height = "794px";
+                tempDiv.style.overflow = "hidden";
+                document.body.appendChild(tempDiv);
+
+                // كتابة محتويات الشهادة مع تثبيت اتجاه RTL والمحاذاة للمنتصف في جميع العناصر
+                tempDiv.innerHTML = `
+                    <div dir="rtl" style="width: 1123px; height: 794px; position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 80px; text-align: center !important; box-sizing: border-box; overflow: hidden; font-family: 'Cairo', sans-serif; background-color: #ffffff; direction: rtl !important;">
+                        
+                        <!-- الخلفية المستقرة مع وضع رابط fallback للتأكيد -->
+                        <img src="${cachedBase64Bg || bgUrl}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; pointer-events: none;" />
+                        
+                        <!-- القسم العلوي من الشهادة -->
+                        <div style="position: relative; z-index: 10; margin-top: 60px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center !important; direction: rtl !important;">
+                            <h2 style="font-size: 30px; font-weight: 700; color: #78350f; margin: 0; padding: 0; text-align: center !important; width: 100%; direction: rtl !important;">
+                                شهادة حضور دورة <span style="color: #92400e; font-weight: 800; direction: rtl !important;">${course.title}</span> (عن بعد)
+                            </h2>
+                        </div>
+                        
+                        <!-- النص الأساسي مع المحاذاة الإجبارية الفائقة للمنتصف لمنع ترحيله لليسار -->
+                        <div style="position: relative; z-index: 10; margin-top: auto; margin-bottom: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center !important; gap: 20px; width: 100%; direction: rtl !important;">
+                            <p style="font-size: 24px; color: #1e293b; margin: 0; padding: 0; text-align: center !important; width: 100%; direction: rtl !important;">يشهد فريق شذرات الابداع التطوعي بأن المتدرب/ـة</p>
+                            <h3 style="font-size: 38px; font-weight: 800; color: #1e1b4b; margin: 5px 0; padding: 0; text-align: center !important; width: 100%; direction: rtl !important;">${userReg.name}</h3>
+                            <p style="font-size: 24px; color: #1e293b; margin: 0; padding: 0; text-align: center !important; width: 100%; direction: rtl !important;">قد حضر/ت دورة</p>
+                            <h4 style="font-size: 30px; font-weight: 800; color: #78350f; margin: 0; padding: 0; text-align: center !important; width: 100%; direction: rtl !important;">${course.title}</h4>
+                            <p style="font-size: 24px; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; text-align: center !important; width: 100%; direction: rtl !important;">
+                                والتي أقيمت يوم <span style="font-weight: 700; color: #0f172a; direction: rtl !important;">${dayName}</span> بتاريخ <span style="font-weight: 700; color: #0f172a; direction: rtl !important;">${dateFormatted}</span> بواقع <span style="font-weight: 700; color: #0f172a; direction: rtl !important;">${course.hours}</span> ساعات
+                            </p>
+                        </div>
+
+                        <!-- التذييل الأخير للشهادة -->
+                        <div style="position: relative; z-index: 10; margin-bottom: 40px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center !important; direction: rtl !important;">
+                            <p style="font-size: 24px; font-weight: 700; font-style: italic; color: #334155; margin: 0; padding: 0; text-align: center !important; width: 100%; direction: rtl !important;">ممتنين له دوام التوفيق</p>
+                        </div>
+                    </div>
+                `;
+
+                // 5. ضبط إعدادات التصدير وتصحيح الاتجاه
+                const opt = {
+                    margin: 0,
+                    filename: `شهادة_${userReg.name}_${course.title}.pdf`,
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { 
+                        scale: 2, 
+                        useCORS: true, 
+                        allowTaint: false,
+                        letterRendering: true,
+                        logging: false,
+                        scrollY: 0, 
+                        scrollX: 0,
+                        windowWidth: 1123,
+                        windowHeight: 794
+                    },
+                    jsPDF: { 
+                        unit: 'mm', 
+                        format: 'a4', 
+                        orientation: 'landscape' 
                     }
-                    
-                    // إخفاء النوافذ الإضافية وإعادة واجهة الـ DOM لوضعها الطبيعي
-                    overlay.classList.add("hidden");
-                    certArea.classList.add("hidden");
-                    certArea.style.cssText = "";
-                    btn.disabled = false;
-                    btn.innerHTML = originalHTML;
-                }).catch((err) => {
-                    console.error("PDF generation failed:", err);
-                    alert("تعذر إنشاء ملف الـ PDF حالياً، يرجى إعادة المحاولة.");
-                    overlay.classList.add("hidden");
-                    certArea.classList.add("hidden");
-                    certArea.style.cssText = "";
-                    btn.disabled = false;
-                    btn.innerHTML = originalHTML;
-                });
-            }, 150);
+                };
+
+                // مهلة برمجية وجيزة للتأكد من استقرار تهيئة محتويات الذاكرة المؤقتة بالمتصفح
+                setTimeout(() => {
+                    html2pdf().set(opt).from(tempDiv.firstElementChild).outputPdf('blob').then((blob) => {
+                        const blobUrl = URL.createObjectURL(blob);
+                        
+                        // فتح الشهادة المستقرة الخالية من الهوامش والفراغات
+                        const newWindow = window.open(blobUrl, '_blank');
+                        
+                        // الخطة البديلة: في حال تم الحظر التلقائي للنوافذ المنبثقة من قبل متصفح العميل
+                        if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                            const link = document.createElement('a');
+                            link.href = blobUrl;
+                            link.download = `شهادة_${userReg.name}_${course.title}.pdf`;
+                            link.click();
+                        }
+                        
+                        // تنظيف بنية الـ DOM وحذف العناصر المؤقتة بالكامل فور الانتهاء
+                        document.body.removeChild(tempDiv);
+                        overlay.classList.add("hidden");
+                        btn.disabled = false;
+                        btn.innerHTML = originalHTML;
+                    }).catch((err) => {
+                        console.error("PDF generation failed:", err);
+                        alert("تعذر تصدير ملف الـ PDF. يرجى إعادة المحاولة.");
+                        if (tempDiv.parentNode) document.body.removeChild(tempDiv);
+                        overlay.classList.add("hidden");
+                        btn.disabled = false;
+                        btn.innerHTML = originalHTML;
+                    });
+                }, 200);
+
+            } catch (err) {
+                console.error("Preparation failed:", err);
+                alert("حدث خطأ أثناء إعداد بيانات الشهادة، يرجى المحاولة لاحقاً.");
+                overlay.classList.add("hidden");
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+            }
         }
 
         function validateEmail(email) {
