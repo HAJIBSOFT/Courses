@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,6 +7,8 @@
     <title>فريق شذرات الابداع التطوعي</title>
     <!-- Tailwind CSS للتصميم العصري -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- مكتبة html2pdf لتوليد ملفات الـ PDF بشكل احترافي عبر المتصفح -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         body { 
@@ -544,17 +547,17 @@
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.507 9.388.507 9.388.507s7.518 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                                 مشاهدة التسجيل
                             </a>
-                        <button onclick="printCertificate('${course.id}')" class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2 border border-amber-500/20">
+                        <button onclick="printCertificate('${course.id}', this)" class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2 border border-amber-500/20">
                             <svg class="w-5 h-5 text-amber-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.617 0-1.11-.461-1.12-1.078L6.34 18m11.32 0h-11.32m0 0V9a1.01 1.01 0 01.028-.237m0 0a17.945 17.945 0 0111.264 0c.018.07.028.154.028.237v9m-11.32-.237a1.01 1.01 0 01-.028-.237V9m11.32.237V9m0 0a1.01 1.01 0 00-.028-.237" /></svg>
-                            طباعة شهادة الحضور
+                            تحميل الشهادة PDF
                         </button>
                         </div>
                     `;
                 } else if (isAttended) {
                     return `
-                        <button onclick="printCertificate('${course.id}')" class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2 border border-amber-500/20">
+                        <button onclick="printCertificate('${course.id}', this)" class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white py-2.5 px-4 rounded-xl transition duration-300 font-bold text-sm shadow-md flex justify-center items-center gap-2 border border-amber-500/20">
                             <svg class="w-5 h-5 text-amber-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.617 0-1.11-.461-1.12-1.078L6.34 18m11.32 0h-11.32m0 0V9a1.01 1.01 0 01.028-.237m0 0a17.945 17.945 0 0111.264 0c.018.07.028.154.028.237v9m-11.32-.237a1.01 1.01 0 01-.028-.237V9m11.32.237V9m0 0a1.01 1.01 0 00-.028-.237" /></svg>
-                            طباعة شهادة الحضور
+                            تحميل الشهادة PDF
                         </button>
                     `;
                 } else if (hasYoutube) {
@@ -607,15 +610,21 @@
             }
         }
 
-        function printCertificate(courseId) {
+        function printCertificate(courseId, btn) {
             const course = coursesData.find(c => c.id === courseId);
             const userReg = userRegistrations[courseId];
             if (!course || !userReg) return;
             
+            // تفعيل حالة التحميل على الزر لراحة المستخدم ومنعه من التكرار العشوائي
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `${SPINNER_SVG} <span class="mr-2">جاري تجهيز الـ PDF...</span>`;
+
             const dateObj = new Date(course.date);
             const dayName = dateObj.toLocaleDateString('ar-EG', { weekday: 'long' });
             const dateFormatted = dateObj.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
 
+            // تحديث بيانات الشهادة
             document.getElementById("cert-title-top").innerText = course.title;
             document.getElementById("cert-user-name").innerText = userReg.name;
             document.getElementById("cert-course-title").innerText = course.title;
@@ -624,12 +633,61 @@
             document.getElementById("cert-hours").innerText = course.hours;
             
             const certArea = document.getElementById("certificate-print-area");
-            certArea.classList.remove("hidden");
             
-            setTimeout(() => {
-                window.print();
+            // إظهار العنصر مؤقتاً خارج الشاشة لتتمكن المكتبة من تصويره بشكل سليم دون مضايقة المستخدم بصرياً
+            const originalStyle = certArea.getAttribute("style") || "";
+            certArea.classList.remove("hidden");
+            certArea.style.cssText = "position: absolute !important; left: -9999px !important; top: -9999px !important; display: flex !important; z-index: -9999 !important; opacity: 1 !important; width: 1123px !important; height: 794px !important;";
+            
+            const element = certArea.querySelector("div");
+
+            // خيارات توليد PDF دقيقة ومطابقة لمقاس A4 العرضي بدقة عالية
+            const opt = {
+                margin: 0,
+                filename: `شهادة_${userReg.name}_${course.title}.pdf`,
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { 
+                    scale: 2, // جودة ممتازة لمنع التغبيش عند التكبير
+                    useCORS: true, // مهم جداً للسماح بتحميل صورة الخلفية بشكل آمن دون أخطاء حجب
+                    letterRendering: true,
+                    logging: false
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'landscape' // الوضع الأفقي للشهادة
+                }
+            };
+
+            // تشغيل محرك توليد الـ PDF من خلال كائن Blob
+            html2pdf().from(element).set(opt).toPdf().get('pdf').then((pdf) => {
+                // استخراج رابط Blob مخصص
+                const blobUrl = pdf.output('bloburl');
+                
+                // فتح الشهادة في علامة تبويب جديدة مستقلة ونظيفة تماماً جاهزة للطباعة أو الحفظ المباشر
+                const newWindow = window.open(blobUrl, '_blank');
+                
+                // فحص بديل: في حال قامت متصفحات الهواتف بحظر النوافذ المنبثقة، سيتم تحميل الملف فوراً على جهاز المتدرب
+                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                    const link = document.createElement('a');
+                    link.href = blobUrl;
+                    link.download = `شهادة_${userReg.name}_${course.title}.pdf`;
+                    link.click();
+                }
+                
+                // إعادة تهيئة عناصر واجهة المستخدم وإخفاء الحاوية غير المرئية
                 certArea.classList.add("hidden");
-            }, 600);
+                certArea.style.cssText = originalStyle;
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+            }).catch((err) => {
+                console.error("PDF generation failed:", err);
+                alert("تعذر إنشاء ملف الـ PDF حالياً، يرجى المحاولة مجدداً.");
+                certArea.classList.add("hidden");
+                certArea.style.cssText = originalStyle;
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+            });
         }
 
         function validateEmail(email) {
